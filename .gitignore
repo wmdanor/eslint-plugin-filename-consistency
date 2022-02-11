@@ -1,0 +1,8 @@
+# Project exclude paths
+/node_modules/
+
+# JetBrains EDI
+.idea/
+
+# VSCode
+.vscode/
