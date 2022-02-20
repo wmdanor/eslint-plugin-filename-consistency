@@ -1,6 +1,9 @@
 {
   "name": "eslint-plugin-filename-consistency",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "description": "Eslint rule for consistent file and folder names",
   "license": "MIT",
   "author": {
@@ -25,9 +28,7 @@
     "path"
   ],
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "devDependencies": {
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
