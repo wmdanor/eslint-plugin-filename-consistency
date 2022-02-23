@@ -2,7 +2,7 @@
   "name": "eslint-plugin-filename-consistency",
   "version": "1.0.0",
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=14"
   },
   "description": "Eslint rule for consistent file and folder names",
   "license": "MIT",
