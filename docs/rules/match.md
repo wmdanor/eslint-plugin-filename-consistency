@@ -61,16 +61,6 @@ Array of cases your naming should match
 ### Options object
 
 Options object has the following properties:
-* `match {string[]}` - list of cases to match
-  * Default `["camel"]`
-* `ignore {string[] | RegExp[]}` - 
-    * Default `[]`
-* `defaultIgnore {boolean}` - property allows turning off default ignored values
-    * Default `true`
-* `validateFolders {boolean}` - property allows turning off folders naming validation
-    * Default `true`
-* `validateExtensions {boolean}` - property allows turning off extensions lowercase validation
-    * Default `true`
 
 | Name                 | Type       | Default                               | Description                                                      |
 |----------------------|------------|---------------------------------------|------------------------------------------------------------------|
