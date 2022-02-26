@@ -37,7 +37,7 @@ Type: `{string}`
 Case your naming should match
 
 #### Example:
-```js
+```json
 "filename-consistency/match": [
   "error",
   "camel"
@@ -51,7 +51,7 @@ Type: `{string[]}`
 Array of cases your naming should match
 
 #### Example:
-```js
+```json
 "filename-consistency/match": [ 
   "error",
   ["camel", "kebab"]
@@ -71,8 +71,8 @@ Options object has the following properties:
 | `validateExtensions` | `boolean`  | `true`                                | Property that allows turning off extensions lowercase validation |
 
 #### Example:
-```js
-"filename-consistency/match": [ 
+```json
+"filename-consistency/match": [
   "error",
   {
     "match": [],

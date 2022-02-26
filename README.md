@@ -1,2 +1,28 @@
+# eslint-plugin-filename-consistency
+
+## Enabling the plugin
+
+This plugin requires a version of `eslint>=1.0.0` to be installed as a peer dependency.
+
+Modify your `.eslintrc` file to load the plugin and enable the rules you want to use.
+
+```json
+{
+  "plugins": [
+    "filename-consistency"
+  ],
+  "rules": {
+    "filename-consistency/match": "error"
+  }
+}
+```
+
 ## Rules
-[match](docs/rules/match.md) - enforce a case style for filenames.
+
+### Consistent files and folders names (`match`)
+
+A rule to enforce a certain file and folder naming convention.
+
+The convention can be configured using the name of case (the default is `camel`).
+
+Read more about this rule [here](docs/rules/match.md)
