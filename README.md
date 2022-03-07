@@ -2,8 +2,6 @@
 
 ## Enabling the plugin
 
-This plugin requires a version of `eslint>=1.0.0` to be installed as a peer dependency.
-
 Modify your `.eslintrc` file to load the plugin and enable the rules you want to use.
 
 ```json
