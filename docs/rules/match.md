@@ -62,21 +62,21 @@ Array of cases your naming should match
 
 Options object has the following properties:
 
-| Name                 | Type       | Default                               | Description                                                      |
-|----------------------|------------|---------------------------------------|------------------------------------------------------------------|
-| `match`              | `string[]` | `["camel"]`                           | List of cases to match                                           |
-| `ignore`             | `string[]` | [See here](#files-ignored-by-default) | List of regular expressions                                      |
-| `defaultIgnore`      | `boolean`  | `true`                                | Property that allows turning off default ignored values          |
-| `validateFolders`    | `boolean`  | `true`                                | Property that allows turning off folders naming validation       |
-| `validateExtensions` | `boolean`  | `true`                                | Property that allows turning off extensions lowercase validation |
+| Name                 | Type                  | Default                               | Description                                                      |
+|----------------------|-----------------------|---------------------------------------|------------------------------------------------------------------|
+| `match`              | `string[]`            | `["camel"]`                           | List of cases to match                                           |
+| `ignore`             | `string[]` `RegExp[]` | [See here](#files-ignored-by-default) | List of regular expressions                                      |
+| `defaultIgnore`      | `boolean`             | `true`                                | Property that allows turning off default ignored values          |
+| `validateFolders`    | `boolean`             | `true`                                | Property that allows turning off folders naming validation       |
+| `validateExtensions` | `boolean`             | `true`                                | Property that allows turning off extensions lowercase validation |
 
 #### Example:
 ```json
 "filename-consistency/match": [
   "error",
   {
-    "match": [],
-    "ignore": [],
+    "match": ["camel"],
+    "ignore": ["^CODE_OF_CONDUCT$"],
     "defaultIgnore": true,
     "validateFolders": true,
     "validateExtensions": true
@@ -89,3 +89,6 @@ Options object has the following properties:
 * `readme` files
 * `license` files
 * `contributing` files
+
+These files will be ignored no matter if values provided into ignore array or not.
+The only way to remove these default ignored files from options is to use `defaultIgnore` property
