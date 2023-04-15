@@ -1,22 +1,23 @@
-'use strict';
+import { Rule } from 'eslint';
+import { parseOptions } from './parseOptions';
+import path, { ParsedPath } from 'path';
+import { MatchOptions, ValidationError, ParsedOptions } from './types';
 
-const { parseOptions } = require('./parseOptions');
-const path = require('path');
+export interface MatchRuleContext extends Rule.RuleContext {
+  options: [MatchOptions];
+}
 
-/**
- * @param {RuleContext} context
- */
-function create(context) {
+export default function create(context: MatchRuleContext): Rule.RuleListener {
   const options = parseOptions(context.options);
-  const errors = [];
+  const errors: ValidationError[] = [];
 
   return {
     Program(node) {
       const parsed = getParsedPath(context);
 
       if (
-        options.ignore.some((regex) => regex.test(parsed.base)) ||
-        options.ignore.some((regex) => regex.test(parsed.path))
+        options.ignore.some(regex => regex.test(parsed.base)) ||
+        options.ignore.some(regex => regex.test(parsed.path))
       ) {
         return;
       }
@@ -41,21 +42,20 @@ function create(context) {
   };
 }
 
-/**
- * @param {ParsedOptions} options
- * @param {MyParsedPath} parsedPath
- * @return {ValidationError[]}
- */
-function validateFolders(options, parsedPath) {
-  const errors = [];
+function validateFolders(
+  options: ParsedOptions,
+  parsedPath: CustomParsedPath,
+): ValidationError[] {
+  const errors: ValidationError[] = [];
+
   const { match } = options;
 
-  parsedPath.dir.split(path.sep).forEach((directory) => {
+  parsedPath.dir.split(path.sep).forEach(directory => {
     if (!directory) {
       return;
     }
 
-    const matchesRegex = match.some((regex) => regex.test(directory));
+    const matchesRegex = match.some(regex => regex.test(directory));
     if (!matchesRegex) {
       errors.push({
         message:
@@ -71,16 +71,14 @@ function validateFolders(options, parsedPath) {
   return errors;
 }
 
-/**
- * @param {ParsedOptions} options
- * @param {MyParsedPath} parsedPath
- * @return {ValidationError[]}
- */
-function validateFilename(options, parsedPath) {
-  const { match } = options;
+function validateFilename(
+  options: ParsedOptions,
+  parsedPath: CustomParsedPath,
+): ValidationError[] {
+  const errors: ValidationError[] = [];
 
-  const fileMatchesRegex = match.some((regex) => regex.test(parsedPath.name));
-  const errors = [];
+  const { match } = options;
+  const fileMatchesRegex = match.some(regex => regex.test(parsedPath.name));
 
   if (!fileMatchesRegex) {
     errors.push({
@@ -96,12 +94,8 @@ function validateFilename(options, parsedPath) {
   return errors;
 }
 
-/**
- * @param {MyParsedPath} parsedPath
- * @return {ValidationError[]}
- */
-function validateExtension(parsedPath) {
-  const errors = [];
+function validateExtension(parsedPath: CustomParsedPath): ValidationError[] {
+  const errors: ValidationError[] = [];
 
   if (parsedPath.ext !== parsedPath.ext.toLocaleLowerCase()) {
     errors.push({
@@ -117,11 +111,11 @@ function validateExtension(parsedPath) {
   return errors;
 }
 
-/**
- * @param {RuleContext} context
- * @return {MyParsedPath}
- */
-function getParsedPath(context) {
+interface CustomParsedPath extends ParsedPath {
+  path: string;
+}
+
+export function getParsedPath(context: MatchRuleContext): CustomParsedPath {
   const cwd = path.resolve(context.getCwd());
   const filePath = context.getFilename();
 

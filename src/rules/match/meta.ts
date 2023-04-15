@@ -1,17 +1,19 @@
-const { casesNames } = require('./constants');
+import { Rule } from 'eslint';
+import { RuleMetaDataSchema } from '../../types';
+import { casesNames } from './constants';
 
-const casesMatchOption = {
+const casesMatchOption: RuleMetaDataSchema = {
   type: 'string',
   enum: [...casesNames],
 };
 
-const regexMatchOption = {
+const regexMatchOption: RuleMetaDataSchema = {
   type: 'string',
   format: 'regex',
   description: 'Regex value',
 };
 
-const schema = [
+const schema: RuleMetaDataSchema = [
   {
     oneOf: [
       casesMatchOption,
@@ -51,14 +53,13 @@ const schema = [
   },
 ];
 
-const meta = {
+const meta: Readonly<Rule.RuleMetaData> = {
   type: 'suggestion',
   docs: {
     description: 'Eslint rule for consistent file and folder names',
+    url: 'https://github.com/wmdanor-universe/eslint-plugin-filename-consistency/blob/master/docs/rules/match.md',
   },
   schema,
 };
 
-module.exports = {
-  meta,
-};
+export default meta;
