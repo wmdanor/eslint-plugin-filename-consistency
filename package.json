@@ -20,6 +20,9 @@
     "path"
   ],
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepare": "husky install",
     "build": "pnpm compile",
