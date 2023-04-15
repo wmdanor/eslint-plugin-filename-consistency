@@ -1,12 +1,12 @@
-'use strict';
+import { cases, defaultIgnore, defaultCase } from './constants';
+import {
+  MatchOptions,
+  MatchOptionsCase,
+  MatchOptionsObject,
+  ParsedOptions,
+} from './types';
 
-const { cases, defaultIgnore, defaultCase } = require('./constants');
-
-/**
- * @param {Options} options
- * @return ParsedOptions
- */
-function parseOptions(options) {
+export function parseOptions(options: [MatchOptions]): ParsedOptions {
   const [matchOptions] = options;
 
   const parsedMatchOptions = parseOptions.match.parse(matchOptions);
@@ -17,11 +17,7 @@ function parseOptions(options) {
 }
 
 parseOptions.match = {
-  /**
-   * @param {MatchOptions} options
-   * @return ParsedOptions
-   */
-  parse(options) {
+  parse(options: MatchOptions): ParsedOptions {
     if (!options) {
       return this.default();
     }
@@ -37,10 +33,7 @@ parseOptions.match = {
     return this.object(options);
   },
 
-  /**
-   * @return ParsedOptions
-   */
-  default() {
+  default(): ParsedOptions {
     return {
       match: [defaultCase],
       ignore: [...defaultIgnore],
@@ -49,26 +42,19 @@ parseOptions.match = {
     };
   },
 
-  /**
-   * @param {MatchOptionsCase} options
-   * @return ParsedOptions
-   */
-  string(options) {
+  string(options: MatchOptionsCase): ParsedOptions {
     return {
       ...this.default(),
       match: [cases[options]],
     };
   },
 
-  /**
-   * @param {MatchOptionsCase[]} options
-   * @return ParsedOptions
-   */
-  array(options) {
-    const match = [];
+  array(options: MatchOptionsCase[]): ParsedOptions {
+    const match: RegExp[] = [];
 
     for (const str of options) {
       const regex = cases[str];
+
       match.push(regex);
     }
 
@@ -78,12 +64,8 @@ parseOptions.match = {
     };
   },
 
-  /**
-   * @param {MatchOptionsObject} options
-   * @return ParsedOptions
-   */
-  object(options) {
-    const parsed = {
+  object(options: MatchOptionsObject): ParsedOptions {
+    const parsed: ParsedOptions = {
       ...this.default(),
       ignore: [],
     };
@@ -116,8 +98,4 @@ parseOptions.match = {
 
     return parsed;
   },
-};
-
-module.exports = {
-  parseOptions,
 };
