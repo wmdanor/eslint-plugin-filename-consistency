@@ -17,7 +17,7 @@ echo "Releasing ${tag}"
 
 git tag $tag
 
-git tag push
+git push origin tag $tag
 
 gh release create $tag
 
