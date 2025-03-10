@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
+        "lib": [
+            "ESNext",
+        ],
+        "module": "CommonJS",
+        "strict": true,
+        "noEmit": true,
+        "target": "ESNext",
+        "rootDir": "."
+    },
+    "include": [
+        "index.js",
+        "lib/**/*.js",
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

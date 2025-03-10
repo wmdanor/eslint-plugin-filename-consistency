@@ -25,7 +25,7 @@ Enforces all linted files to have their names in a certain case style and lowerc
 ### `pascal`
 
 - `FooBar.ext`
-- `FooBar.Test.ext`
+- `FooBar.test.ext`
 - `FooBar.TestUtils.ext`
 
 ## Options
@@ -65,8 +65,9 @@ Options object has the following properties:
 | Name                 | Type                  | Default                               | Description                                                      |
 |----------------------|-----------------------|---------------------------------------|------------------------------------------------------------------|
 | `match`              | `string[]`            | `["camel"]`                           | List of cases to match                                           |
-| `ignore`             | `string[]` `RegExp[]` | [See here](#files-ignored-by-default) | List of regular expressions                                      |
-| `defaultIgnore`      | `boolean`             | `true`                                | Property that allows turning off default ignored values          |
+| `ignore`             | `string[]` `RegExp[]` | `[]`                                  | Ignore if ENTIRE path matches RegExp, NOT recommended to use.    |
+| `ignoreSegments`     | `string[]` `RegExp[]` | [See here](#files-ignored-by-default) | Path segments to ignore validation for                           |
+| `defaultIgnore`      | `boolean`             | `true`                                | Property that allows turning off default ignored segments        |
 | `validateFolders`    | `boolean`             | `true`                                | Property that allows turning off folders naming validation       |
 | `validateExtensions` | `boolean`             | `true`                                | Property that allows turning off extensions lowercase validation |
 
@@ -89,6 +90,8 @@ Options object has the following properties:
 * `readme` files
 * `license` files
 * `contributing` files
+* `CODE_OF_CONDUCT` files
+* `Dockerfile` files
 
 These files will be ignored no matter if values provided into ignore array or not.
 The only way to remove these default ignored files from options is to use `defaultIgnore` property
