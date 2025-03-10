@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const { create, meta } = require('./lib/rules/match');
+const { create, meta } = require("./lib/rules/match");
 
 module.exports = {
   rules: {
