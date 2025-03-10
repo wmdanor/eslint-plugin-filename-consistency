@@ -25,7 +25,7 @@ Enforces all linted files to have their names in a certain case style and lowerc
 ### `pascal`
 
 - `FooBar.ext`
-- `FooBar.Test.ext`
+- `FooBar.test.ext`
 - `FooBar.TestUtils.ext`
 
 ## Options
