@@ -18,3 +18,7 @@ echo "Releasing ${tag}"
 git tag $tag
 
 git tag push
+
+gh release create $tag
+
+npm publish
