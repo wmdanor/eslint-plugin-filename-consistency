@@ -1,3 +1,7 @@
+[![npm version](https://img.shields.io/npm/v/eslint-plugin-filename-consistency.svg)](https://www.npmjs.com/package/eslint-plugin-filename-consistency)
+[![Downloads](https://img.shields.io/npm/dm/eslint-plugin-filename-consistency.svg)](https://www.npmjs.com/package/eslint-plugin-filename-consistency)
+[![Build Status](https://github.com/wmdanor/eslint-plugin-filename-consistency/workflows/CI/badge.svg)](https://github.com/wmdanor/eslint-plugin-filename-consistency/actions)
+
 # eslint-plugin-filename-consistency
 
 ## Enabling the plugin
